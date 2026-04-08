@@ -35,6 +35,7 @@ stmt
     | 'scan' '(' expr ')' SC
     | TYPE VARNAME SC
     | 'del' VARNAME SC
+    | expr SC
     //TODO: vezerlesi szerkezetek - for, while, if, switch-case
     ;
 
@@ -46,11 +47,11 @@ expr
 
 // TODO: RTL associative!!!
 assignop
-    : fstop=relop ('?' expr ':' expr)*
+    : fstop=ternaryop ('?' ternaryop ':' ternaryop)*
     ;
 
 ternaryop
-    : fstop=relop (OPEQ nxtop=relop)*
+    : fstop=eqop (OPEQ nxtop=eqop)*
     ;
 
 eqop
@@ -62,7 +63,7 @@ relop
     ;
 
 addop
-    : fstop=mulop (OPMUL nxtop=mulop)*
+    : fstop=fct (OPMUL nxtop=fct)*
     ;
 
 fct
