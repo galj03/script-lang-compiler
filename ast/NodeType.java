@@ -11,15 +11,15 @@ public enum NodeType {
     SCAN, //DONE?
 
     IDENTIFIER, //DONE
-    ASSIGNMENT,
+    ASSIGNMENT, //DONE
     DECLARATION, //DONE
     DELETE, //DONE
 
-    IF,
-    WHILE,
+    IF, //DONE
+    WHILE, //DONE
     FOR,
     SWITCH,
 
     CASESTMT,
-    BLOCKSTMT,
+    BLOCKSTMT, //DONE
 }
