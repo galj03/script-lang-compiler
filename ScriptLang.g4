@@ -34,16 +34,23 @@ stmt
     | TYPE VARNAME SC
     | 'del' VARNAME SC
     | expr SC
-    //TODO: vezerlesi szerkezetek - for, while, if, switch-case
     | 'if' '(' expr ')' blockstmt
       ('elseif' '(' expr ')' blockstmt)*
       ('else' blockstmt)?
     | 'while' '(' expr ')' blockstmt
     | 'for' '(' (expr)? ';' expr ';' (expr)? ')' blockstmt
+    | 'switch' '(' expr ')' '{'
+      (casestmt)+
+      ('default' ':' (stmt)*)?
+      '}'
     ;
 
 blockstmt
     : '{' (stmt)* '}'
+    ;
+
+casestmt
+    : 'case' expr ':' (stmt)* ('break' SC)?
     ;
 
 // TODO: RTL associative!!!
@@ -78,6 +85,7 @@ fct
     | 'TIME'
     | '(' expr ')'
     | 'abs' '(' expr ')'
+    | OPADD fct
     ;
 
 SC       : ';' ;
