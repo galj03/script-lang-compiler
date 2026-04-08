@@ -1,19 +1,19 @@
 package ast;
 
 public enum NodeType {
-    CONSTANT,
+    CONSTANT, //DONE
     TERNARY_OP,
-    BINARY_OP,
-    UNARY_OP,
+    BINARY_OP, //DONE
+    UNARY_OP, //DONE
     
-    ABS,
-    PRINT,
-    SCAN,
+    ABS, //DONE
+    PRINT, //DONE
+    SCAN, //DONE?
 
-    IDENTIFIER,
+    IDENTIFIER, //DONE
     ASSIGNMENT,
-    DECLARATION,
-    DELETE,
+    DECLARATION, //DONE
+    DELETE, //DONE
 
     IF,
     WHILE,

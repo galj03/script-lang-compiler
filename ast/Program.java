@@ -27,10 +27,21 @@ public class Program {
         }
     }
 
-    public Program(){
-        this.statements = new ArrayList<>();
-        this.doubleValues = new HashMap<>();
-        this.intValues = new HashMap<>();
+    public boolean hasVariable(String name, VariableType type) {
+        if (VariableType.DOUBLE == type) {
+            return this.doubleValues.containsKey(name);
+        } else if (VariableType.INT == type) {
+            return this.intValues.containsKey(name);
+        }
+        return false;
+    }
+
+    public void removeVariable(String name, VariableType type) {
+        if (VariableType.DOUBLE == type) {
+            this.doubleValues.remove(name);
+        } else if (VariableType.INT == type) {
+            this.intValues.remove(name);
+        }
     }
 
     public Program(){
