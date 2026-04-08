@@ -96,7 +96,7 @@ TYPE     : 'int' | 'double' ;
 VARNAME  : [a-zA-Z]+ ; //if a used keyword is given, fail!!!
 OPASSIGN : '=' ;
 OPEQ     : '==' | '!=' ;
-OPREL    : '<' | '>' ;
+OPREL    : '<' | '>' | '<=' | '>=' ;
 OPADD    : '+' | '-' ;
 OPMUL    : '*' | '/' ;
 COMMENT  : '#' (~[\n])* '\n' ->skip ; //TODO: test if commenting breaks the code
