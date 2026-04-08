@@ -24,9 +24,7 @@ options {
     }
 }
 
-//TODO: put these together!!!
 start
-    //: ( (line)? COMMENT? LF )* EOF
     : (stmt)* EOF
     ;
 
@@ -37,8 +35,16 @@ stmt
     | 'del' VARNAME SC
     | expr SC
     //TODO: vezerlesi szerkezetek - for, while, if, switch-case
+    | 'if' '(' expr ')' blockstmt
+      ('elseif' '(' expr ')' blockstmt)*
+      ('else' blockstmt)?
+    | 'while' '(' expr ')' blockstmt
+    | 'for' '(' (expr)? ';' expr ';' (expr)? ')' blockstmt
     ;
 
+blockstmt
+    : '{' (stmt)* '}'
+    ;
 
 // TODO: RTL associative!!!
 expr
