@@ -2,7 +2,7 @@ package ast;
 
 public enum NodeType {
     CONSTANT, //DONE
-    TERNARY_OP,
+    TERNARY_OP, //DONE
     BINARY_OP, //DONE
     UNARY_OP, //DONE
     
@@ -18,8 +18,8 @@ public enum NodeType {
     IF, //DONE
     WHILE, //DONE
     FOR, //DONE
-    SWITCH,
+    SWITCH, //DONE
 
-    CASESTMT,
+    CASESTMT, //DONE
     BLOCKSTMT, //DONE
 }
