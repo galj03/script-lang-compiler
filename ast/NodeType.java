@@ -17,7 +17,7 @@ public enum NodeType {
 
     IF, //DONE
     WHILE, //DONE
-    FOR,
+    FOR, //DONE
     SWITCH,
 
     CASESTMT,
