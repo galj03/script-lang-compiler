@@ -1,5 +1,8 @@
 package ast;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class NodeIf extends NodeBase {
     private Node condition;
     private NodeBlockStmt thenBranch;

@@ -24,7 +24,7 @@ public class NodeScan extends NodeBase {
         String valStr = scanner.nextLine();
 
         Double val = Double.parseDouble(valStr);
-        prog.setVariable(((NodeIdentifier)arg).getName(), val, ((NodeIdentifier)arg).getVariableType());
+        prog.setVariable(((NodeIdentifier)arg).getName(), val);
         return val;
     }
 }

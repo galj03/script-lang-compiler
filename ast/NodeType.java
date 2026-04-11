@@ -8,7 +8,7 @@ public enum NodeType {
     
     ABS, //DONE
     PRINT, //DONE
-    SCAN, //DONE?
+    SCAN, //DONE
 
     IDENTIFIER, //DONE
     ASSIGNMENT, //DONE

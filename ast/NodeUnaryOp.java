@@ -17,8 +17,10 @@ public class NodeUnaryOp extends NodeBase {
 
     @Override
     public Double eval(Program prog) {
-        //lehetne switch case is
-        if(!"+".equals(opType) && !"-".equals(opType))return Double.NaN;
+        if(!"+".equals(opType) && !"-".equals(opType)){
+            System.err.println(String.format("Unsupported unary operator: %s", opType));
+            return Double.NaN;
+        }
 
         Double argVal = arg.eval(prog);
         return "+".equals(opType) ? argVal : -argVal;

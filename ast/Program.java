@@ -1,21 +1,17 @@
 package ast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Program {
     private ArrayList<Node> statements;
 
-    //TODO (enhancement): generalize this to a single map with a wrapper class for the value and type
     private Map<VariableType, Map<String, Double>> variables;
-    //private Map<String, Double> doubleValues;
-    //private Map<String, Integer> intValues;
+    private Map<String, VariableType> variableTypes;
 
-    public Double getVariable(String name, VariableType type) {
-        // if (VariableType.DOUBLE == type) {
-        //     return doubleValues.get(name);
-        // } else if (VariableType.INT == type) {
-        //     return intValues.get(name);
-        // }
+    public Double getVariable(String name) {
+        VariableType type = variableTypes.get(name);
         Map<String, Double> typeVariables = variables.get(type);
         if (typeVariables != null) {
             return typeVariables.get(name);
@@ -24,37 +20,47 @@ public class Program {
     }
 
     //TODO: test for integers
-    public void setVariable(String name, VariableType type, Double value) {
-        // if (VariableType.DOUBLE == type) {
-        //     this.doubleValues.put(name, value);
-        // } else if (VariableType.INT == type) {
-        //     this.intValues.put(name, value);
-        // }
+    //only for existing variables, otherwise it will throw an error
+    public void setVariable(String name, Double value) {
+        VariableType type = variableTypes.get(name);
+        System.out.println(String.format("<Program> Setting variable %s of type %s to value %f", name, type, value));
         Map<String, Double> typeVariables = variables.get(type);
         if (typeVariables != null) {
             typeVariables.put(name, value);
         }
     }
 
-    public boolean hasVariable(String name, VariableType type) {
-        // if (VariableType.DOUBLE == type) {
-        //     return this.doubleValues.containsKey(name);
-        // } else if (VariableType.INT == type) {
-        //     return this.intValues.containsKey(name);
-        // }
+    //for new variables
+    public void setVariable(String name, Double value, VariableType type) {
+        System.out.println(String.format("<Program> Setting variable %s of type %s to value %f", name, type, value));
+        variableTypes.put(name, type);
         Map<String, Double> typeVariables = variables.get(type);
         if (typeVariables != null) {
+            typeVariables.put(name, value);
+        }
+    }
+
+    public boolean hasVariable(String name) {
+        VariableType type = variableTypes.get(name);
+        Map<String, Double> typeVariables = variables.get(type);
+        if (typeVariables != null) {
+            System.out.println(String.format("<Program> Checking if variable %s of type %s exists: %b", name, type, typeVariables.containsKey(name)));
             return typeVariables.containsKey(name);
         }
         return false;
     }
 
-    public void removeVariable(String name, VariableType type) {
-        // if (VariableType.DOUBLE == type) {
-        //     this.doubleValues.remove(name);
-        // } else if (VariableType.INT == type) {
-        //     this.intValues.remove(name);
-        // }
+    public boolean hasVariable(String name, VariableType type) {
+        Map<String, Double> typeVariables = variables.get(type);
+        if (typeVariables != null) {
+            System.out.println(String.format("<Program> Checking if variable %s of type %s exists: %b", name, type, typeVariables.containsKey(name)));
+            return typeVariables.containsKey(name);
+        }
+        return false;
+    }
+
+    public void removeVariable(String name) {
+        VariableType type = variableTypes.get(name);
         Map<String, Double> typeVariables = variables.get(type);
         if (typeVariables != null) {
             typeVariables.remove(name);
@@ -64,6 +70,7 @@ public class Program {
     public Program(){
         this.statements = new ArrayList<>();
         this.variables = new HashMap<>();
+        this.variableTypes = new HashMap<>();
     }
 
     public void addStatement(Node node){
@@ -83,6 +90,7 @@ public class Program {
     public void run(){
         for (Node n : statements) {
             System.out.printf("Value: %f\n", n.eval(this));
+            //n.eval(this);
         }
     }
 }

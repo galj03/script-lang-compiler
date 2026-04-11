@@ -25,12 +25,12 @@ public class NodeDeclaration extends NodeBase {
 
     @Override
     public Double eval(Program prog) {
-        if(prog.hasVariable(name, variableType)){
-            System.err.println(String.format("Variable %s of type %s already exists", name, variableType.toString()));
+        if(prog.hasVariable(name)){
+            System.err.println(String.format("Variable %s already exists", name));
             return Double.NaN;
         }
         
-        prog.setVariable(name, variableType, 0.0);
-        return prog.getVariable(name, variableType);
+        prog.setVariable(name, 0.0, variableType);
+        return prog.getVariable(name);
     }
 }

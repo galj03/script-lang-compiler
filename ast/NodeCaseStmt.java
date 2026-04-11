@@ -1,5 +1,7 @@
 package ast;
 
+import java.util.ArrayList;
+
 public class NodeCaseStmt extends NodeBase {
     private Node caseValue;
     private ArrayList<Node> statements;

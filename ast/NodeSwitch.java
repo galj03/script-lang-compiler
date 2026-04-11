@@ -1,5 +1,7 @@
 package ast;
 
+import java.util.ArrayList;
+
 public class NodeSwitch extends NodeBase {
     private Node switchValue;
     private ArrayList<NodeCaseStmt> caseStatements;

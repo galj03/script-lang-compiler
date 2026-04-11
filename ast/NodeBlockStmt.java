@@ -1,5 +1,7 @@
 package ast;
 
+import java.util.ArrayList;
+
 public class NodeBlockStmt extends NodeBase {
     private ArrayList<Node> statements;
 

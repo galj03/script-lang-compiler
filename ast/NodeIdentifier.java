@@ -2,34 +2,28 @@ package ast;
 
 public class NodeIdentifier extends NodeBase {
     private String name;
-    private VariableType variableType;
 
-    public NodeIdentifier(String name, VariableType variableType) {
+    public NodeIdentifier(String name) {
         super(NodeType.IDENTIFIER);
         this.name = name;
-        this.variableType = variableType;
     }
 
     public String getName() {
         return name;
     }
 
-    public VariableType getVariableType() {
-        return variableType;
-    }
-
     @Override
     public String toString() {
-        return String.format("Identifier(%s, %s)", name, variableType.toString());
+        return String.format("Identifier(%s)", name);
     }
 
     @Override
     public Double eval(Program prog) {
-        if(!prog.hasVariable(name, variableType)){
-            System.err.println(String.format("Variable %s of type %s does not exist", name, variableType.toString()));
+        if(!prog.hasVariable(name)){
+            System.err.println(String.format("<NodeIdentifier> Variable %s does not exist", name));
             return Double.NaN;
         }
 
-        return prog.getVariable(name, variableType);
+        return prog.getVariable(name);
     }
 }
