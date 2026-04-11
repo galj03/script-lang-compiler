@@ -22,7 +22,16 @@ public class NodeFor extends NodeBase {
 
     @Override
     public String toString() {
-        return String.format("For(%s, %s)", condition.toString(), body.toString());
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("For(cond:%s):\n", condition.toString()));
+        if(initialization != null){
+            sb.append(String.format("Initialization: %s\n", initialization.toString()));
+        }
+        if(increment != null){
+            sb.append(String.format("Increment: %s\n", increment.toString()));
+        }
+        sb.append(String.format("Body:\n%s\n", body.toString()));
+        return sb.toString();
     }
 
     @Override

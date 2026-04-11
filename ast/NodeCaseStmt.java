@@ -29,8 +29,14 @@ public class NodeCaseStmt extends NodeBase {
 
     @Override
     public String toString(){
-        return String.format("CaseStmt(%s, %d statements)", caseValue.toString(), statements.size());
-        //TODO: print statements
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("CaseStmt(%s, hasBreak=%b):\n", caseValue.toString(), hasBreak));
+        for (Node node : statements) {
+            sb.append(node.toString());
+            sb.append("\n\n");
+        }
+
+        return sb.toString();
     }
 
     @Override

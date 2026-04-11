@@ -28,8 +28,20 @@ public class NodeSwitch extends NodeBase {
 
     @Override
     public String toString() {
-        return String.format("Switch(%s)", switchValue.toString());
-        //TODO: add case statements and default statements to string
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("Switch(%s):\n", switchValue.toString()));
+        for (NodeCaseStmt caseStmt : caseStatements) {
+            sb.append(caseStmt.toString());
+        }
+        if (defaultStatements != null) {
+            sb.append("Default:\n");
+            for (Node stmt : defaultStatements) {
+                sb.append(stmt.toString());
+                sb.append("\n\n");
+            }
+        }
+
+        return sb.toString();
     }
 
     @Override

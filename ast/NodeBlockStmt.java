@@ -16,8 +16,14 @@ public class NodeBlockStmt extends NodeBase {
 
     @Override
     public String toString(){
-        return String.format("BlockStmt(%d statements)", statements.size());
-        //TODO: print statements
+        StringBuilder sb = new StringBuilder();
+        sb.append("BlockStmt:\n");
+        for (Node node : statements) {
+            sb.append(node.toString());
+            sb.append("\n\n");
+        }
+
+        return sb.toString();
     }
 
     @Override
