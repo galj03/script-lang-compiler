@@ -1,0 +1,14 @@
+# Ez az input fuggvenyeben futhat helyesen
+# vagy okozhat futasi hibat
+int x;
+scan(x);
+while(x!=0) {
+    switch(x) {
+        case 1: int y; scan(y); break;
+        case 2: del y;
+        case 3: x = abs(-5); break;
+        default: x = TIME>0 ? 10 : -10;
+    }
+    scan(x);
+}
+print(x+y);

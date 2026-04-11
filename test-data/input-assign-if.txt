@@ -1,0 +1,19 @@
+int a;
+int x;
+
+int b;
+scan(b);
+
+a = x = 5;
+
+# kiirja a nagyobb erteket
+if(a==b){
+    print(-1); # vagy -1-et, ha egyenloek
+}
+elseif(a>b){
+    print(a);
+}
+else{
+    print(b);
+}
+print(x);

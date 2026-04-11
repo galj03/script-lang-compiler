@@ -1,0 +1,10 @@
+int starttime;
+int sum;
+int x;
+starttime = TIME;
+sum = 0;
+for (x=0; x<100000; x=x+1) {
+  sum = sum + x;
+}
+print(sum);
+print(TIME - starttime); # for some reason, this is always 0 (TIME gets evaluated AOT?)
