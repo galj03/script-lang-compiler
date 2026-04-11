@@ -23,7 +23,7 @@ public class Program {
     //only for existing variables, otherwise it will throw an error
     public void setVariable(String name, Double value) {
         VariableType type = variableTypes.get(name);
-        System.out.println(String.format("<Program> Setting variable %s of type %s to value %f", name, type, value));
+        //System.out.println(String.format("<Program> Setting variable %s of type %s to value %f", name, type, value));
         Map<String, Double> typeVariables = variables.get(type);
         if (typeVariables != null) {
             typeVariables.put(name, value);
@@ -32,7 +32,7 @@ public class Program {
 
     //for new variables
     public void setVariable(String name, Double value, VariableType type) {
-        System.out.println(String.format("<Program> Setting variable %s of type %s to value %f", name, type, value));
+        //System.out.println(String.format("<Program> Setting variable %s of type %s to value %f", name, type, value));
         variableTypes.put(name, type);
         Map<String, Double> typeVariables = variables.get(type);
         if (typeVariables != null) {
@@ -44,7 +44,7 @@ public class Program {
         VariableType type = variableTypes.get(name);
         Map<String, Double> typeVariables = variables.get(type);
         if (typeVariables != null) {
-            System.out.println(String.format("<Program> Checking if variable %s of type %s exists: %b", name, type, typeVariables.containsKey(name)));
+            //System.out.println(String.format("<Program> Checking if variable %s of type %s exists: %b", name, type, typeVariables.containsKey(name)));
             return typeVariables.containsKey(name);
         }
         return false;
@@ -53,7 +53,7 @@ public class Program {
     public boolean hasVariable(String name, VariableType type) {
         Map<String, Double> typeVariables = variables.get(type);
         if (typeVariables != null) {
-            System.out.println(String.format("<Program> Checking if variable %s of type %s exists: %b", name, type, typeVariables.containsKey(name)));
+            //System.out.println(String.format("<Program> Checking if variable %s of type %s exists: %b", name, type, typeVariables.containsKey(name)));
             return typeVariables.containsKey(name);
         }
         return false;
@@ -64,12 +64,15 @@ public class Program {
         Map<String, Double> typeVariables = variables.get(type);
         if (typeVariables != null) {
             typeVariables.remove(name);
+            variableTypes.remove(name);
         }
     }
 
     public Program(){
         this.statements = new ArrayList<>();
         this.variables = new HashMap<>();
+        variables.put(VariableType.INT, new HashMap<>());
+        variables.put(VariableType.DOUBLE, new HashMap<>());
         this.variableTypes = new HashMap<>();
     }
 
@@ -89,8 +92,8 @@ public class Program {
 
     public void run(){
         for (Node n : statements) {
-            System.out.printf("Value: %f\n", n.eval(this));
-            //n.eval(this);
+            //System.out.printf("Value: %f\n", n.eval(this));
+            n.eval(this);
         }
     }
 }
