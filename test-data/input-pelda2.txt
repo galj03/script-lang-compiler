@@ -1,10 +1,14 @@
-int starttime;
-int sum;
+# Ez az input fuggvenyeben futhat helyesen
+# vagy okozhat futasi hibat
 int x;
-starttime = TIME;
-sum = 0;
-for (x=0; x<10; x=x+1) {
-  sum = sum + x;
+scan(x);
+while(x>0) {
+    switch(x) {
+        case 1: int y; scan(y); break;
+        case 2: del y;
+        case 3: x = 5; break;
+        default: x = 10;
+    }
+    scan(x);
 }
-print(sum);
-print(TIME - starttime);
+print(x+y);
